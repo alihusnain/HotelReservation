@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+@model IEnumerable<TermProject.Models.Hotel>
+<div id="showthere">
+    @foreach (var s in Model)
+            {
+
+        <!-- Project One -->
+        <div class="row">
+            <div class="col-md-5">
+                <a href="portfolio-item.html">
+
+                    @if (s.Images.ToList().Count > 0)
+                            {
+                        <img class="img-responsive img-hover" src=@("../images/hotel/" + @s.Images.ToList()[0].Id + "_" + @s.Images.ToList()[0].HotelId + ".jpg") alt="">
+                            }
+                </a>
+            </div>
+            <div class="col-md-7">
+                <h3>@s.Name</h3>
+                <h4>City:</h4><h5> @s.City</h5>
+                <h4>Rating:</h4> <h5> @s.Rating</h5>
+                <h4>Rooms and Prices:</h4>
+                @foreach (var rooms in s.Rooms)
+                        {
+                    <h5>@rooms.Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @rooms.Price</h5>
+                        }
+                <h4>Description:</h4><p>@s.Description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                <a class="btn btn-primary" href="../Search/Hotel?id=@s.Id"><i>View Details</i></a>
+            </div>
+        </div>
+        <!-- /.row -->
+        <hr>
+            }
+</div>

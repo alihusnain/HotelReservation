@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c9d37c6d4d54607bc10edfe84eb2194" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.Hotel" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.Room" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="easyLivingDatabaseModel.HotelRoom" />
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.Booking" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.User" Width="1.5" PointX="0.75" PointY="4.75" />
+        <AssociationConnector Association="easyLivingDatabaseModel.HotelBooking" />
+        <AssociationConnector Association="easyLivingDatabaseModel.UserBooking" />
+        <AssociationConnector Association="easyLivingDatabaseModel.RoomBooking" />
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.Comment" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.Image" Width="1.5" PointX="6.5" PointY="3.25" />
+        <AssociationConnector Association="easyLivingDatabaseModel.HotelImage" />
+        <AssociationConnector Association="easyLivingDatabaseModel.HotelComment" />
+        <AssociationConnector Association="easyLivingDatabaseModel.UserComment" />
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.Rating" Width="1.5" PointX="6.375" PointY="5.75" />
+        <AssociationConnector Association="easyLivingDatabaseModel.HotelRating" />
+        <AssociationConnector Association="easyLivingDatabaseModel.UserRating" />
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.FAQ" Width="1.5" PointX="4.25" PointY="8.875" />
+        <EntityTypeShape EntityType="easyLivingDatabaseModel.FeedBack" Width="1.5" PointX="1.625" PointY="8.25" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

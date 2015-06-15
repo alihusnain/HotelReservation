@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+}
+        
+    <br/>
+<br/>
+<br/>
+<br/>
+
+    <div>
+        <h3 style="margin-left:200px; font-weight:500 ">Sign Up</h3>
+        <hr style="margin-left:200px; width:900px"/>
+    </div>
+    
+    <div>    
+        <form action="/Home/SignupSave" class="form-horizontal" role="form">
+
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="name">Name: </label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" required name="Name" placeholder="Enter Name" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-lg-3"  for="email">Email:</label>
+                <div class="col-lg-4">
+                    <input type="email" class="form-control" name="Email" id="email" required placeholder="Enter Email" />
+                </div>
+                <div id="result"></div>
+                <div id="checking">Checking...</div>
+            </div>
+
+            
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="address" >Address:</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" name="Address" placeholder="Enter Address"/>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="country">Phone: </label>
+                <div class="col-lg-4">
+                    <input type="number" class="form-control" name="Phone" placeholder="Enter Phone" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="country">CNIC: </label>
+                <div class="col-lg-4">
+                    <input type="number" class="form-control" name="Cnic" placeholder="Enter your CNIC" />
+                </div>
+            </div>
+            <input type="hidden" name="Bolck" value="NOT" />
+            
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="pwd">Password:</label>
+                <div class="col-lg-4">
+                    <input type="password" class="form-control" required name="Password" id="pass1" onchange="checkPass()" placeholder="Password" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="pwd">Retype Password:</label>
+                <div class="col-lg-4">
+                    <input type="password" class="form-control" required name="password" id="pass2" onchange="checkPass()" placeholder="Retype Password" />
+                </div>
+                <div><div id="confirmMessage"></div></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-3 col-lg-10">
+                    <input type="submit" disabled value="Submit" id="sub" class="btn btn-default" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+@Scripts.Render("~/bundles/jquery")
+<script>
+
+    $(document).ready(function () {
+        
+        $('#checking').hide();
+        $('#email').change(function () {
+
+            var userName = $('#email').val();
+
+            //alert('User Name ='+ userName);
+            $('#checking').show();
+            $.getJSON("/Home/CheckUserName?UserName=" + userName, function (data) {
+                $('#checking').hide();
+                if (data) {
+                    $('#result').text("This Email already exists.");
+                    $('#sub').attr('disabled','disabled');
+                }
+                else {
+                    $('#result').text("Email is available");
+                    $('#sub').removeAttr('disabled');
+                }
+            });
+
+        });
+
+    });
+
+    function checkPass() {
+
+        var pass1 = document.getElementById('pass1');
+        var pass2 = document.getElementById('pass2');
+        var sub = document.getElementById('sub');
+
+
+        var message = document.getElementById('confirmMessage');
+
+        if (pass1.value == pass2.value) {
+
+            message.innerHTML = "Passwords Match!"
+            sub.removeAttribute("disabled");
+            
+        } else {
+
+            message.innerHTML = "Passwords Do Not Match!"
+            sub.disabled = true;
+        }
+    }
+</script>

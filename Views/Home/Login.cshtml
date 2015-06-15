@@ -1,0 +1,321 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+@model TermProject.Models.User
+      
+    <br/>
+<br/><br/><br/>
+
+<meta name="description" content="" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+    jQuery(function ($) {
+
+        // simple jQuery validation script
+        $('#login').submit(function () {
+
+            var valid = true;
+            var errormsg = 'This field is required!';
+            var errorcn = 'error';
+
+            $('.' + errorcn, this).remove();
+
+            $('.required', this).each(function () {
+                var parent = $(this).parent();
+                if ($(this).val() == '') {
+                    var msg = $(this).attr('title');
+                    msg = (msg != '') ? msg : errormsg;
+                    $('<span class="' + errorcn + '">' + msg + '</span>')
+                .appendTo(parent)
+                .fadeIn('fast')
+                .click(function () { $(this).remove(); })
+                    valid = false;
+                };
+            });
+            return valid;
+        });
+    })
+</script>
+<style>
+    /* HTML elements  */ h1, h2, h3, h4, h5, h6 {
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.1em;
+        color: #000;
+    }
+
+
+
+
+    hr {
+        display: none;
+    }
+
+
+    form div {
+        margin: .5em 0;
+        clear: both;
+    }
+
+    label {
+        display: block;
+    }
+
+    /* //  HTML elements */ /* base */
+
+    body, table, input, textarea, select, li, button {
+        font: 1em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        line-height: 1.5em;
+        color: #444;
+    }
+
+    body {
+        text-align: center;
+    }
+    /* // base */ /* login form */
+
+    #login {
+        margin: 5em auto;
+        background: #fff;
+        
+        width: 500px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        -moz-box-shadow: 0 0 10px #4e707c;
+        -webkit-box-shadow: 0 0 10px #4e707c;
+        box-shadow: 0 0 10px #4e707c;
+        text-align: left;
+        position: relative;
+    }
+
+        #login a, #login a:visited {
+            color: #0283b2;
+        }
+
+            #login a:hover {
+                color: #111;
+            }
+
+        #login h1 {
+            
+            
+            text-shadow: #007dab 0 1px 0;
+            font-size: 14px;
+            padding: 18px 23px;
+            margin: 0 0 1.5em 0;
+            border-bottom: 1px solid #007dab;
+        }
+
+        #login .register {
+            position: absolute;
+            float: left;
+            margin: 0;
+            line-height: 30px;
+            top: -40px;
+            right: 0;
+            font-size: 11px;
+        }
+
+        #login p {
+            margin: .5em 25px;
+        }
+
+        #login div {
+            margin: .5em 25px;
+            
+            padding: 4px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            text-align: right;
+            position: relative;
+        }
+
+        #login label {
+            float: left;
+            line-height: 30px;
+            padding-left: 10px;
+            font-size: medium;
+        }
+
+        #login .field {
+            border: 1px solid #ccc;
+            width: 280px;
+            font-size: 12px;
+            line-height: 1em;
+            padding: 4px;
+            -moz-box-shadow: inset 0 0 5px #ccc;
+            -webkit-box-shadow: inset 0 0 5px #ccc;
+            box-shadow: inset 0 0 5px #ccc;
+        }
+
+        #login div.submit {
+            
+            margin: 1em 25px;
+            text-align: left;
+        }
+
+            #login div.submit label {
+                float: none;
+                display: inline;
+                font-size: 11px;
+            }
+
+        #login button {
+            border: 0;
+            padding: 0 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 12px;
+            
+            text-shadow: #007dab 0 1px 0;
+            
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        #login input[type="submit"] {
+            border: 0;
+            padding: 0 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+            text-shadow: #007dab 0 1px 0;
+            
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        #login .forgot {
+            text-align: right;
+            font-size: 11px;
+        }
+
+        #login .back {
+            padding: 1em 0;
+            border-top: 1px solid #eee;
+            text-align: right;
+            font-size: 11px;
+            color: Red;
+            font-weight: bold;
+        }
+
+        #login .error {
+            float: left;
+            position: absolute;
+            left: 95%;
+            top: -5px;
+            
+            padding: 5px 10px;
+            font-size: 11px;
+            color: #fff;
+            text-shadow: #500 0 1px 0;
+            text-align: left;
+            white-space: nowrap;
+            border: 1px solid #500;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            -moz-box-shadow: 0 0 5px #700;
+            -webkit-box-shadow: 0 0 5px #700;
+            
+        }
+    /* //  login form */
+
+    .aspNetHidden {
+        display: none;
+    }
+</style>
+
+<script>
+    function emailValidate() {
+        var email = document.getElementById("Email").value;
+        if ((email.indexOf('@@') < 0) || (email.indexOf('.') < 0) || (email.lastIndexOf('.') - email.lastIndexOf('@@') < 2)) {
+            alert("Your entered Wrong email format");
+            return false;
+        }
+        return true;
+    }
+
+    </script>
+
+
+@using (Html.BeginForm("CheckLogin", "Home", FormMethod.Get, new { id = "login" }))
+{
+    
+    <h1>
+        Log in to your account!
+    </h1>
+
+    <div>
+        @Html.LabelFor(x=>x.Email , new { @for = "login_username" })
+        @Html.TextBoxFor(x => x.Email, new { @class = "field required", type = "text", title = "Please provide your Email", id = "Email" })
+      
+    </div>
+
+    <div>
+        @Html.LabelFor(x => x.Password, new { @for = "login_password" })
+        @Html.PasswordFor(x => x.Password, new { @class = "field required", title = "Password is required", id = "Password" })
+    </div>
+    
+    <div class="submit">
+
+        <label style="font-size:medium;">Not Registered?</label>
+        @Html.ActionLink("Register Here", "/Register", "Account", new { style = "font-size:medium;" })
+
+        <input class="pull-right" type="submit" value="Login"onclick="return emailValidate()" style="font-size:medium;" />
+    </div>
+
+}
+
+
+
+
+
+
+
+
+
+<!--
+
+    <div>
+        <h3 style="margin-left:200px; font-weight:500 ">Sign In</h3>
+        <hr style="margin-left:200px; width:900px"/>
+    </div>
+    
+    <div>    
+        <form action="../Home" class="form-horizontal" role="form">
+
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="email">Email:</label>
+                <div class="col-lg-3">
+                    <input type="email" class="form-control" name="email" placeholder="Enter Email"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="pwd">Password:</label>
+                <div class="col-lg-3">
+                    <input type="password" class="form-control" name="password" placeholder="Enter Password"/>
+                </div>
+            </div>            
+
+            <div class="form-group">
+                <div class="col-lg-offset-3 col-lg-10">
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+-->

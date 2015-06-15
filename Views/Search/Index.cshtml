@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "Hotels";
+}
+
+@model IEnumerable<TermProject.Models.Hotel>
+
+    <!-- Page Csontent -->
+    <div class="container">
+
+    <div class="row">
+                <div class=" col-md-6">
+                    <h3 style="margin-left:150px; font-weight:500 ">Search Here</h3>            
+                </div>
+        <hr style="margin-left:100px; width:800px"/> 
+    </div>
+    
+    <div class="col-md-offset-2">    
+        <form id="search" action="../Search/Index" method="get" class="form-horizontal" role="form">
+
+
+            <div class="form-group ">
+                <div class=" col-md-3">
+                    <label class="col-md-3">City</label>
+                    <div class="form-group">
+                        <select class="form-control" name="city" id="city" form="search">
+                            <option>Lahore</option>
+                            <option>Karachi</option>
+                            <option>Islamabad</option>
+                            <option>Faisalabad</option>
+                            <option>Multan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 ">
+                    <label class="col-md-3">Rating</label>
+                    <div class="form-group">
+                        <select class="form-control" name="rating" id="rating" form="search">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <label class="col-md-3">Price</label>
+                    <div class="form-group">
+                        <select class="form-control" name="price" id="price" form="search">
+                            
+                            <option value="5000">5000 to 15000</option>
+                            <option value="15000">15000 to 25000</option>
+                            <option value="25000">25000 to 35000</option>
+                            <option value="35000">35000 to 45000</option>
+                            <option value="45000">45000 to above</option>
+                        </select>
+                    </div>
+                </div>
+                <label class="col-md-3">Search</label>
+                <div class="col-md-2">
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">Hotel in @ViewBag.c 
+                    <small></small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li class="active"></li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+        <div id="showthere">
+            @foreach (var s in Model)
+            {
+
+        <!-- Project One -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="portfolio-item.html">
+
+                            @if (s.Images.ToList().Count > 0)
+                            {
+                                <img class="img-responsive img-hover" src=@("../images/hotel/" + @s.Images.ToList()[0].Id + "_" + @s.Images.ToList()[0].HotelId + ".jpg") alt="">
+                            }
+                        </a>
+                    </div>
+                    <div class="col-md-7">
+                        <h3>@s.Name</h3>
+                        <h4>City:</h4><h5> @s.City</h5> 
+                        <h4>Rating:</h4> <h5> @s.Rating</h5>
+                        <h4>Rooms and Prices:</h4> 
+                        @foreach (var rooms in s.Rooms)
+                        {
+                            <h5>@rooms.Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @rooms.Price</h5>
+                        }
+                        <h4>Description:</h4><p>@s.Description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                        <a class="btn btn-primary" href="../Search/Hotel?id=@s.Id"><i>View Details</i></a>
+                    </div>
+                </div>
+        <!-- /.row -->
+                <hr>
+            }
+        </div>
+        
+        <!-- Pagination 
+        <div class="row text-center">
+            <div class="col-md-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+ <!-- jQuery -->
+    <script src="~/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/js/bootstrap.min.js"></script>
+<script>
+
+    $('#city').change(function () {
+        var value = $('#city').val();
+
+        $('#showthere').load('/Home/City?city=' + value);
+    });
+
+
+
+
+
+    $('#rating').change(function () {
+        var value = $('#rating').val();
+
+        $('#showthere').load('/Home/RateBasis?rate=' + value);
+    });
+
+    $('#price').change(function () {
+        var value = $('#price').val();
+
+        $('#showthere').load('/Home/PriceBasis?price=' + value);
+    });
+
+</script>
